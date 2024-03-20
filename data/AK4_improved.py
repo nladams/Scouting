@@ -49,7 +49,7 @@ process.genJetSequence = cms.Sequence(
 
 # Create ParticleNet ntuple
 process.tree = cms.EDAnalyzer("AK4JetNtupleProducer",
-      isQCD = cms.untracked.bool(True),
+      isQCD = cms.untracked.bool(True), # change
       gen_jets = cms.InputTag( "genJetFlavourAssociation" ),
       pf_candidates = cms.InputTag( "hltScoutingPFPacker" ),
 )

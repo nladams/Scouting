@@ -1,26 +1,28 @@
 import FWCore.ParameterSet.Config as cms
 from PhysicsTools.NanoAOD.run3scouting_cff import *
 from FWCore.ParameterSet.VarParsing import VarParsing
-import splitter.py as splitter
+from splitter import get_file_and_parents
 
 params = VarParsing('analysis')
 
+# arguments for text file of files and integer number of which file to run on
 params.register('fileNum',
                 0,
                 VarParsing.multiplicity.singleton,
                 VarParsing.varType.int,
                 "file number in list of files")
 
-params.register('inputDataset',
+params.register('inputTextFile',
     '',
     VarParsing.multiplicity.singleton,
     VarParsing.varType.string,
-    "Input dataset")
+    "Input text file of files")
 
 process = cms.Process("LL")
 params.parseArguments()
 
-file_name, parent_files = splitter.get_file_and_parents(params.inputTextFile,params.fileNum)
+# call splitter function to get file name and its corresponding parent files
+file_name, parent_files = get_file_and_parents(params.inputTextFile, params.fileNum)
 
 
 process.load('Configuration.StandardSequences.Services_cff')

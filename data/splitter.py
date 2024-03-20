@@ -33,11 +33,11 @@ params.register('inputTextFile',
 
 to run the function, include the following:
 
-file_name, parent_files = get_file_and_parents(params.inputTextFile,params.condInputNum)
+file_name, parent_files = get_file_and_parents(params.inputTextFile,params.fileNum)
 
 and run as: 
 
-cmsRun ak4.py inputTextFile="./test.txt" condInputNum=5 
+cmsRun ak4_improved.py inputTextFile="./test.txt" condInputNum=5 
 
 """
 

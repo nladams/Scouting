@@ -18,6 +18,7 @@ def get_file_and_parents(text_file_of_files,file_index):
     return(file_name,parent_files)
 
 """
+include in .py file:
 
 params.register('fileNum',
                 0,

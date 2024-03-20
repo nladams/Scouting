@@ -19,11 +19,11 @@ def get_file_and_parents(text_file_of_files,file_index):
 
 """
 
-params.register('condInputNum',
+params.register('fileNum',
                 0,
                 VarParsing.multiplicity.singleton,
                 VarParsing.varType.int,
-                "the file to run on")
+                "the number of the file to run on")
 
 params.register('inputTextFile',
                 '',
@@ -37,7 +37,7 @@ file_name, parent_files = get_file_and_parents(params.inputTextFile,params.fileN
 
 and run as: 
 
-cmsRun ak4_improved.py inputTextFile="./test.txt" condInputNum=5 
+cmsRun ak4_improved.py inputTextFile="./test.txt" fileNum=5 
 
 """
 

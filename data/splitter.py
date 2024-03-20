@@ -31,22 +31,24 @@ params.register('inputTextFile',
                 VarParsing.varType.string,
                 "path to text file with dataset file names")
 
-to run the function, do the following:
+to run the function, include the following:
 
 file_name, parent_files = get_file_and_parents(params.inputTextFile,params.condInputNum)
+
+and run as: 
 
 cmsRun ak4.py inputTextFile="./test.txt" condInputNum=5 
 
 """
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     
-    file_index = int(sys.argv[1])
+ #   file_index = int(sys.argv[1])
 
-    file_name, parent_files = get_file_and_parents("./test.txt",file_index)
+  #  file_name, parent_files = get_file_and_parents("./test.txt",file_index)
 
-    print(file_name)
-    print(*parent_files)
+   # print(file_name)
+    # print(*parent_files)
     
 

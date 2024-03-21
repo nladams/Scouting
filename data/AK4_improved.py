@@ -36,8 +36,7 @@ process.source = cms.Source("PoolSource",
         secondaryFileNames = cms.untracked.vstring(*parent_files)
 )
 process.TFileService = cms.Service("TFileService",
-    #fileName = cms.string(file_name)
-    fileName = cms.string("test_improved.root")
+    fileName = cms.string(file_name[159:]) #takes last ~10 characters bc taking full file_name makes it crash
 )
 
 

@@ -20,6 +20,8 @@ params.register('inputTextFile',
 
 process = cms.Process("LL")
 params.parseArguments()
+process.load("FWCore.MessageService.MessageLogger_cfi")
+process.MessageLogger.cerr.FwkReport.reportEvery = 5000
 
 # call splitter function to get file name and its corresponding parent files
 file_name, parent_files = get_file_and_parents(params.inputTextFile, params.fileNum)
@@ -36,7 +38,7 @@ process.source = cms.Source("PoolSource",
         secondaryFileNames = cms.untracked.vstring(*parent_files)
 )
 process.TFileService = cms.Service("TFileService",
-    fileName = cms.string(file_name[-15:]) #takes last 15 characters bc taking full file_name makes it crash
+fileName = cms.string('/cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Analysis/test/QCD_ntuples/ntuple_' + str(params.fileName) + '.root') # directory to store output
 )
 
 

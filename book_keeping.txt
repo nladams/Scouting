@@ -15,7 +15,8 @@ secondary
 
 ------------------------------------------------------------------------------------------------------
 QCD dataset (37 files, ~700,000 events)
-dataset=/store/mc/Run3Summer22EEMiniAODv3/QCD_PT-2400to3200_TuneCP5_13p6TeV_pythia8/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/
+dataset=/QCD_PT-2400to3200_TuneCP5_13p6TeV_pythia8/Run3Summer22EEMiniAODv3-124X_mcRun3_2022_realistic_postEE_v1-v2/MINIAODSIM
+
 
 4,15,16,19,24,25,28,32,35 are empty (?)
 

@@ -1,21 +1,10 @@
 #!/bin/bash
 
-# set the dataset dir
-[[ -z $DATADIR ]] && DATADIR='/data/adlintul/input/ak4'
-
-# set the dataset dir
-[[ -z $OUTPUT ]] && OUTPUT='output'
-
-# set the model directory
-[[ -z $MODEL ]] && MODEL='output'
-
-data_config="data/flavour.yaml"
-model_config="networks/flavour.py"
-
 weaver \
 	--predict \
-      	--data-test "${DATADIR}/BulkGravitonToHH_MX960_MH121_TuneCP5_13p6TeV_madgraph-pythia8/Run3Summer22EE/230322_202038/0000/ntuple_1.root" \
-	--data-config ${data_config} --network-config ${model_config} \
-	--model-prefix ${MODEL}/net_best_epoch_state.pt \
-	--gpus '3' --batch-size 512 \
+      	--data-test "/cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Analysis/test/QCD_ntuples/*" \
+	--data-config /cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Training/AK4/flavour/data/flavour.yaml \
+ 	--network-config /cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Training/AK4/flavour/networks/flavour.py \
+	--model-prefix /cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Training/AK4/flavour/output/ak4_flavour_20240325-122350_flavour_ranger_lr0.005_batch512/net_best_epoch_state.pt \
+	--gpus '0,1' --batch-size 512 \
 	--predict-output ${OUTPUT}/pred.root

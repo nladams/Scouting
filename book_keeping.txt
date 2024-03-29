@@ -22,5 +22,6 @@ TTbar dataset (194 files, ~7 million events)
 dataset=/TT_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v2/MINIAODSIM
 TTbar_ntuples
 
-Bulk Graviton (22 files, ~100,000 events)
+Bulk Graviton1 (22 files, ~100,000 events)
 dataset=/BulkGravitonToHH_MX1300_MH121_TuneCP5_13p6TeV_madgraph-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v2/MINIAODSIM
+BG1_ntuples

@@ -24,6 +24,7 @@ TTbar_ntuples
 
 Single AOD file from above dataset's parent file (for "slim down" testing)
 /store/mc/Run3Summer22DRPremix/TT_TuneCP5_13p6TeV_powheg-pythia8/AODSIM/124X_mcRun3_2022_realistic_v12-v3/2810000/01a621e1-1618-4670-aa7c-00cd686d66d7.root
+TTbar_AOD.root
 
 
 

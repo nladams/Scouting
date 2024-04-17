@@ -38,7 +38,7 @@ process.source = cms.Source("PoolSource",
         secondaryFileNames = cms.untracked.vstring(*parent_files)
 )
 process.TFileService = cms.Service("TFileService",
-fileName = cms.string('/cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Analysis/test/QCD_ntuples/ntuple_' + str(params.fileName) + '.root') # directory to store output
+fileName = cms.string('/cms/nla49/Scouting/CMSSW_13_1_0_pre2/src/Run3ScoutingJetTagging/Analysis/test/QCD_ntuples/ntuple_' + str(params.fileNum) + '.root') # directory to store output
 )
 
 

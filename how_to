@@ -21,6 +21,8 @@ scram b -j 8
 
 runTheMatrix.py -l 2500.5
 
+Note 2500.51 is for MC and 2500.5 for data
+
 5. Hopefully this executed successfully. A folder called something starting with '2500.5' should've been created. This contains a NanoAOD file called 'step2.root' which is your sample. The AK4 jets in this sample (called 'ScoutingJet') have variables called e.g. 'particleNet_prob_b' which is one of the PNet output scores provided by running the inference. 
 
 6. If all of this worked, you can now add your ONNX model and preprocess JSON to a folder called 'data' (it has to be called 'data' in case you want to submit CRAB jobs with this workflow)

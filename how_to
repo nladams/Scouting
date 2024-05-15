@@ -1,36 +1,36 @@
 How to export a trained model and apply it to real scouting data: (courtesy of Adelina)
 
 
-First create a CMSSW environment with the required code available. You could perhaps also use a later version than what I write here, however, I know that there has been more work done to the scouting-based NanoAOD since I last contributed. Due to preparing for the defense, I am not 100% caught up with those changes, so safest is to use this older version.
+1. First create a CMSSW environment with the required code available. You could perhaps also use a later version than what I write here, however, I know that there has been more work done to the scouting-based NanoAOD since I last contributed. Due to preparing for the defense, I am not 100% caught up with those changes, so safest is to use this older version.
 
 cmsrel CMSSW_13_3_1_patch1
 cd CMSSW_13_3_1_patch1/src
 cmsenv
 
-Next, add the necessary CMSSW package
+2. Next, add the necessary CMSSW package
 
 git cms-init
 git cms-addpkg PhysicsTools/NanoAOD
 
-Finally, compile the code
+3. Finally, compile the code
 
 cd ${CMSSW_BASE}
 scram b -j 8
 
-Before we add your model, let's test the setup by running (make sure you have a valid grid proxy):
+4. Before we add your model, let's test the setup by running (make sure you have a valid grid proxy):
 
 runTheMatrix.py -l 2500.5
 
-       6. Hopefully this executed successfully. A folder called something starting with '2500.5' should've been created. This contains a NanoAOD file called 'step2.root' which is your sample. The AK4 jets in this sample (called 'ScoutingJet') have variables called e.g. 'particleNet_prob_b' which is one of the PNet output scores provided by running the inference. 
+5. Hopefully this executed successfully. A folder called something starting with '2500.5' should've been created. This contains a NanoAOD file called 'step2.root' which is your sample. The AK4 jets in this sample (called 'ScoutingJet') have variables called e.g. 'particleNet_prob_b' which is one of the PNet output scores provided by running the inference. 
 
-      7. If all of this worked, you can now add your ONNX model and preprocess JSON to a folder called 'data' (it has to be called 'data' in case you want to submit CRAB jobs with this workflow)
+6. If all of this worked, you can now add your ONNX model and preprocess JSON to a folder called 'data' (it has to be called 'data' in case you want to submit CRAB jobs with this workflow)
 
 mkdir ${CMSSW_BASE}/src/data
 cd ${CMSSW_BASE}/src/data
 cp $YOUR_PATH_TO_ONNX_MODEL model.onnx
 cp $YOUR_PATH_TO_PREPROCESS preprocess.json
 
-     8. Now change these two paths to your local ONNX model and preprocess JSON files. More specifically:
+7. Now change these two paths to your local ONNX model and preprocess JSON files. More specifically:
 
 Open ${CMSSW_BASE}/PhysicsTools/NanoAOD/python/run3scouting_cff.py with your favourite text editor
 And, in the following module:
@@ -58,13 +58,13 @@ The order of the items in this list
 
 NEEDS to match the order of the items in your preprocess JSON. An example to follow: see how these items match the order of these items. Hopefully this is naturally the case, however, I missed this when I was developing this code and spent weeks debugging it. If for some reason they don't match, you cannot change the order of the items in the preprocess JSON (this will break your model) but you have to change it in the 'ak4ScoutingJetParticleNetJetTags' module of 'run3scouting_cff.py' file.
 
-    9. Not sure if necessary, but compile just in case
+8. recompile
 
 cd ${CMSSW_BASE}
 scram b -j 8
 
-    10. Now when you run the workflow, in theory, the AK4 jets should have the output score of your model. To run the workflow again just execute the file called 'step2_NANO.py' (located in the folder starting with the name '2500.5') using cmsRun.
+9. Now when you run the workflow, in theory, the AK4 jets should have the output score of your model. To run the workflow again just execute the file called 'step2_NANO.py' (located in the folder starting with the name '2500.5') using cmsRun.
 
 cmsRun step2_NANO.py
 
-    11. Finally, just make sure that everything got picked up correctly and your the new file ('step2.root') has a different value for the PNet output scores. If it's the same as for the test run, your model did not get picked up. If all looks good, you can change the input dataset to a more recent dataset by ammending 'step2_NANO.py', here you can also change the number of events to run over etc
+10. Finally, just make sure that everything got picked up correctly and your the new file ('step2.root') has a different value for the PNet output scores. If it's the same as for the test run, your model did not get picked up. If all looks good, you can change the input dataset to a more recent dataset by ammending 'step2_NANO.py', here you can also change the number of events to run over etc
